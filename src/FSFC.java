@@ -6,4 +6,10 @@ public class FSFC extends Utemezo {
         super(taskok);
     }
 
+    @Override
+    public String utemez() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'utemez'");
+    }
+
 }
