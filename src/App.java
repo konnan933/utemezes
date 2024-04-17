@@ -3,6 +3,12 @@ import java.util.ArrayList;
 public class App {
     public static void main(String[] args) throws Exception {
         String bemenet = "A,0,0,4;B,0,0,5;C,0,1,1;D,0,1,3;E,0,3,1";
+
+        ArrayList<Task> arrBemenet = stringToTasks(bemenet);
+
+        FCFS fcfs = new FCFS(arrBemenet);
+
+        System.out.println(fcfs.utemez());
     }
 
     public static ArrayList<Task> stringToTasks(String stringTasks){

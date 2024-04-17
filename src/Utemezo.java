@@ -8,4 +8,6 @@ public abstract class Utemezo {
     }
 
     public abstract String utemez();
+
+    public abstract String waitTimeToString();
 }
