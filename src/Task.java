@@ -4,6 +4,7 @@ public class Task {
     int start;
     int length;
     int waitTime;
+    boolean done = false;
 
     public Task(String name, int prio, int start, int length){
         this.name = name;
