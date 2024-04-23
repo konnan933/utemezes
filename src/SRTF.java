@@ -12,4 +12,10 @@ public class SRTF extends Utemezo {
         throw new UnsupportedOperationException("Unimplemented method 'utemez'");
     }
 
+    @Override
+    public String waitTimeToString() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'waitTimeToString'");
+    }
+
 }

@@ -27,6 +27,7 @@ public class RR extends Utemezo {
                 i++;
             }
         }
+        return sorrend;
     }
 
     @Override
