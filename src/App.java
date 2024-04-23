@@ -8,9 +8,11 @@ public class App {
 
         FCFS fcfs = new FCFS(arrBemenet);
         SJF sjf = new SJF(arrBemenet);
+        RR rr = new RR(arrBemenet, 2);
 
         //System.out.println(fcfs.utemez());
-        System.out.println(sjf.utemez());
+        //System.out.println(sjf.utemez());
+        System.out.println(rr.utemez());
     }
 
     public static ArrayList<Task> stringToTasks(String stringTasks){

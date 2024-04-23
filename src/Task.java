@@ -14,8 +14,4 @@ public class Task {
         this.waitTime = 0;
     }
 
-    public void incWaitTime(){
-        waitTime++;
-    }
-
 }
