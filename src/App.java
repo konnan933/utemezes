@@ -7,8 +7,10 @@ public class App {
         ArrayList<Task> arrBemenet = stringToTasks(bemenet);
 
         FCFS fcfs = new FCFS(arrBemenet);
+        SJF sjf = new SJF(arrBemenet);
 
-        System.out.println(fcfs.utemez());
+        //System.out.println(fcfs.utemez());
+        System.out.println(sjf.utemez());
     }
 
     public static ArrayList<Task> stringToTasks(String stringTasks){
