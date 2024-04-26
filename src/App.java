@@ -13,7 +13,7 @@ public class App {
 
         //System.out.println(fcfs.utemez());
         //System.out.println(sjf.utemez());
-        System.out.println(srtf.utemez());
+        System.out.println(rr.utemez());
     }
 
     public static ArrayList<Task> stringToTasks(String stringTasks){
