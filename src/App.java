@@ -9,23 +9,23 @@ public class App {
         System.out.println("1-est adja ha FCFS\n2-est adja ha RR\n3-ast adja ha SJF\n4-est adja ha SRTF\n0-ast adja ha kilép." );
         String valasz = scr.nextLine();
 
-        FCFS fcfs = new FCFS(stringToTasks(bemenet));
-        SJF sjf = new SJF(stringToTasks(bemenet));
-        RR rr = new RR(stringToTasks(bemenet), 2);
-        SRTF srtf = new SRTF(stringToTasks(bemenet), stringToTasks(bemenet));
-
+        
         ArrayList<Task> arrBemenet = stringToTasks(bemenet);
         while (!valasz.equals("0")) {
             if (valasz.equals("1")) {
                 inputTasksToString(arrBemenet);
+                FCFS fcfs = new FCFS(stringToTasks(bemenet));
                 System.out.println(fcfs.utemez()+"\n");
             }else if (valasz.equals("2")) {
                 inputTasksToString(arrBemenet);
+                RR rr = new RR(stringToTasks(bemenet), 2);
                 System.out.println(rr.utemez()+"\n");
             }else if (valasz.equals("3")) {
+                SJF sjf = new SJF(stringToTasks(bemenet));
                 inputTasksToString(arrBemenet);
                 System.out.println(sjf.utemez()+"\n");
             }else if (valasz.equals("4")) {
+                SRTF srtf = new SRTF(stringToTasks(bemenet), stringToTasks(bemenet));
                 inputTasksToString(arrBemenet);
                 System.out.println(srtf.utemez()+"\n");
             }else{
