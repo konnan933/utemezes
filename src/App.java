@@ -9,11 +9,13 @@ public class App {
         FCFS fcfs = new FCFS(arrBemenet);
         SJF sjf = new SJF(arrBemenet);
         RR rr = new RR(arrBemenet, 2);
-        SRTF srtf = new SRTF(arrBemenet);
+        ArrayList<Task> helpBemenet =  stringToTasks(bemenet);
+        SRTF srtf = new SRTF(arrBemenet, helpBemenet);
 
         //System.out.println(fcfs.utemez());
         //System.out.println(sjf.utemez());
-        System.out.println(rr.utemez());
+        //System.out.println(rr.utemez());
+        System.out.println(srtf.utemez());
     }
 
     public static ArrayList<Task> stringToTasks(String stringTasks){

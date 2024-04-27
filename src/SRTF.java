@@ -5,30 +5,30 @@ public class SRTF extends Utemezo {
     ArrayList<Task> runningTaskok = new ArrayList<>();
     ArrayList<Task> originalTasks = new ArrayList<>();
 
-    public SRTF(ArrayList<Task> taskok) {
+    public SRTF(ArrayList<Task> taskok, ArrayList<Task> helpTaskok) {
         super(taskok);
-        deepCopieTasks(originalTasks);
+        this.originalTasks = helpTaskok;
     }
 
     @Override
     public String utemez() {
         String sorrend = "";
         int varHossz = 0;
-        for (int i = 1; i <= getFullLength(taskok); i++) {
+        while (!allTasksDone(originalTasks)) {
             Task shortest =  getShortest(taskok, varHossz);
             int shortestIndex = findIndexByName(taskok, shortest);
-
-            
+                
             taskok.get(shortestIndex).length--;
             
-            if (sorrend.length() != 0 && Character.toString(sorrend.charAt(sorrend.length()-1)) != shortest.name) {
+            if (sorrend.length() != 0 && !Character.toString(sorrend.charAt(sorrend.length()-1)).equals(shortest.name)) {
+                //System.out.println(Character.toString(sorrend.charAt(sorrend.length()-1)));
                 sorrend += shortest.name;
             }else if (sorrend.length() == 0){
                 sorrend += shortest.name;
             }
             addWaitTime(shortest);
             varHossz++;
-            if (taskok.get(shortestIndex).length == 0) {
+            if (taskok.get(shortestIndex).length <= 0) {
                 originalTasks.get(shortestIndex).done = true;
             }
         }
@@ -49,33 +49,25 @@ public class SRTF extends Utemezo {
 
     public void addWaitTime(Task shortest){
         for (Task task : originalTasks) {
-            if(task.name != shortest.name){
+            if(task.name != shortest.name && !task.done){
                 task.waitTime++;
             }
         }
     }
 
-    public int getFullLength(ArrayList<Task> taskok){
-        int osszesen = 0;
-        for (Task task : taskok) {
-            osszesen += task.length;
+     boolean allTasksDone(ArrayList<Task> tasks) {
+        for (Task task : originalTasks) {
+            if (!task.done) return false;
         }
-        
-        return osszesen;
+        return true;
     }
 
     public int findIndexByName(ArrayList<Task> holKeres, Task keresendo){
         int i = 0;
-        while (i < holKeres.size() && !(holKeres.get(i).name == keresendo.name)) {
+        while (i < holKeres.size()-1 && !(holKeres.get(i).name.equals(keresendo.name))) {
             i++;
         }
         return i;
-    }
-
-    public void deepCopieTasks(ArrayList<Task> hova){
-        for (Task task : taskok) {
-            hova.add(new Task(task));
-        }
     }
 
     @Override
