@@ -75,7 +75,7 @@ public class SRTF extends Utemezo {
         String sorrend_ido = "\n";
         for (Task task : originalTasks) {
             task.waitTime -= task.start;
-            sorrend_ido += task.name+": "+task.waitTime+" ";
+            sorrend_ido += task.name+":"+task.waitTime+" ";
         }
         return sorrend_ido;
     }

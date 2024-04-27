@@ -1,20 +1,48 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) throws Exception {
         String bemenet = "A,0,0,4;B,0,0,5;C,0,1,1;D,0,1,3;E,0,3,1";
-
-        ArrayList<Task> arrBemenet = stringToTasks(bemenet);
+        Scanner scr = new Scanner(System.in);
+        System.out.println("Kérem adja meg melyik ütemezőt akarja használni?");
+        System.out.println("1-est adja ha FCFS\n2-est adja ha RR\n3-ast adja ha SJF\n4-est adja ha SRTF\n0-ast adja ha kilép." );
+        String valasz = scr.nextLine();
 
         FCFS fcfs = new FCFS(stringToTasks(bemenet));
         SJF sjf = new SJF(stringToTasks(bemenet));
         RR rr = new RR(stringToTasks(bemenet), 2);
-        SRTF srtf = new SRTF(arrBemenet, stringToTasks(bemenet));
+        SRTF srtf = new SRTF(stringToTasks(bemenet), stringToTasks(bemenet));
 
-        System.out.println(fcfs.utemez());
-        System.out.println(sjf.utemez());
-        System.out.println(rr.utemez());
-        System.out.println(srtf.utemez());
+        ArrayList<Task> arrBemenet = stringToTasks(bemenet);
+        while (!valasz.equals("0")) {
+            inputTasksToString(arrBemenet);
+            if (valasz.equals("1")) {
+                System.out.println(fcfs.utemez()+"\n");
+            }else if (valasz.equals("2")) {
+                System.out.println(rr.utemez()+"\n");
+            }else if (valasz.equals("3")) {
+                System.out.println(sjf.utemez()+"\n");
+            }else if (valasz.equals("4")) {
+                System.out.println(srtf.utemez()+"\n");
+            }else{
+                System.out.println("Rossz bemenet");    
+            }
+            System.out.println("Kérem adja meg melyik ütemezőt akarja használni?");
+            System.out.println("1-est adja ha FCFS\n2-est adja ha RR\n3-ast adja ha SJF\n4-est adja ha SRTF\n0-ast adja ha kilép." );
+            valasz = scr.nextLine();
+        }
+
+        System.out.println("Ön kilépett!");
+
+    }
+
+    public static void inputTasksToString(ArrayList<Task> tasks){
+        System.out.println("Taskok: ");
+        for (Task task : tasks) {
+            System.out.println(task.name+": "+task.prio+","+task.start+","+task.length+";");
+        }
+        System.out.println("");
     }
 
     public static ArrayList<Task> stringToTasks(String stringTasks){

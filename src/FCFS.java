@@ -31,7 +31,7 @@ public class FCFS extends Utemezo {
     public String waitTimeToString() {
         String sorrend_ido = "\n";
         for (Task task : taskok) {
-            sorrend_ido += task.name+": "+task.waitTime+" ";
+            sorrend_ido += task.name+":"+task.waitTime+" ";
         }
         
         return sorrend_ido;
