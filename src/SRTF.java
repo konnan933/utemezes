@@ -12,12 +12,12 @@ public class SRTF extends Utemezo {
 
     @Override
     public String utemez() {
-        String sorrend = "";
+        String sorrend = "SRTF:\n";
         int varHossz = 0;
         while (!allTasksDone(originalTasks)) {
             Task shortest =  getShortest(taskok, varHossz);
             int shortestIndex = findIndexByName(taskok, shortest);
-                
+
             taskok.get(shortestIndex).length--;
             
             if (sorrend.length() != 0 && !Character.toString(sorrend.charAt(sorrend.length()-1)).equals(shortest.name)) {
@@ -75,7 +75,7 @@ public class SRTF extends Utemezo {
         String sorrend_ido = "\n";
         for (Task task : originalTasks) {
             task.waitTime -= task.start;
-            sorrend_ido += " "+task.name+": "+task.waitTime;
+            sorrend_ido += task.name+": "+task.waitTime+" ";
         }
         return sorrend_ido;
     }

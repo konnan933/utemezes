@@ -9,7 +9,7 @@ public class FCFS extends Utemezo {
     @Override
     public String utemez() {    
         
-        String sorrend = "";
+        String sorrend = "FCFS:\n";
          
         for (int i = 0; i < taskok.size(); i++) {
             wait : for (int j = 0; j < taskok.size(); j++) {
@@ -31,7 +31,7 @@ public class FCFS extends Utemezo {
     public String waitTimeToString() {
         String sorrend_ido = "\n";
         for (Task task : taskok) {
-            sorrend_ido += " "+task.name+": "+task.waitTime;
+            sorrend_ido += task.name+": "+task.waitTime+" ";
         }
         
         return sorrend_ido;

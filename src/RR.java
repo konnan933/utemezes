@@ -14,7 +14,7 @@ public class RR extends Utemezo {
 
     @Override
     public String utemez() {
-        String sorrend = "";
+        String sorrend = "RR:\n";
         int waitTime = 0;
         while (!allTasksDone(taskok)) {
             Task currentTask = runningTaskok.remove(0);
@@ -70,7 +70,7 @@ public class RR extends Utemezo {
         String sorrend_ido = "\n";
         for (Task task : taskok) {
             task.waitTime -= task.start;
-            sorrend_ido += " "+task.name+": "+task.waitTime;
+            sorrend_ido += task.name+": "+task.waitTime+" ";
         }
         return sorrend_ido;
 

@@ -12,12 +12,12 @@ public class SJF extends Utemezo {
     @Override
     public String utemez() {
 
-        String sorrend = "";
+        String sorrend = "SJF:\n";
         int varHossz = 0;
         for (int i = 1; i <= taskok.size(); i++) {
             Task shortest =  getShortest(taskok, varHossz);
             sorrend += shortest.name;
-            shortest.waitTime += varHossz - shortest.start;
+            shortest.waitTime += varHossz;
             varHossz += shortest.length;
         }
         sorrend += waitTimeToString();
@@ -40,7 +40,8 @@ public class SJF extends Utemezo {
     public String waitTimeToString() {
         String sorrend_ido = "\n";
         for (Task task : taskok) {
-            sorrend_ido += " " + task.name + ": " + task.waitTime;
+            task.waitTime -= task.start;
+            sorrend_ido += task.name+": "+task.waitTime+" ";
         }
 
         return sorrend_ido;

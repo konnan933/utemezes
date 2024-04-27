@@ -6,15 +6,14 @@ public class App {
 
         ArrayList<Task> arrBemenet = stringToTasks(bemenet);
 
-        FCFS fcfs = new FCFS(arrBemenet);
-        SJF sjf = new SJF(arrBemenet);
-        RR rr = new RR(arrBemenet, 2);
-        ArrayList<Task> helpBemenet =  stringToTasks(bemenet);
-        SRTF srtf = new SRTF(arrBemenet, helpBemenet);
+        FCFS fcfs = new FCFS(stringToTasks(bemenet));
+        SJF sjf = new SJF(stringToTasks(bemenet));
+        RR rr = new RR(stringToTasks(bemenet), 2);
+        SRTF srtf = new SRTF(arrBemenet, stringToTasks(bemenet));
 
-        //System.out.println(fcfs.utemez());
-        //System.out.println(sjf.utemez());
-        //System.out.println(rr.utemez());
+        System.out.println(fcfs.utemez());
+        System.out.println(sjf.utemez());
+        System.out.println(rr.utemez());
         System.out.println(srtf.utemez());
     }
 
