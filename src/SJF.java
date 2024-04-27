@@ -17,7 +17,7 @@ public class SJF extends Utemezo {
         for (int i = 1; i <= taskok.size(); i++) {
             Task shortest =  getShortest(taskok, varHossz);
             sorrend += shortest.name;
-            shortest.waitTime += varHossz;
+            shortest.waitTime += varHossz - shortest.start;
             varHossz += shortest.length;
         }
         sorrend += waitTimeToString();

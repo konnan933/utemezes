@@ -69,6 +69,7 @@ public class RR extends Utemezo {
     public String waitTimeToString() {
         String sorrend_ido = "\n";
         for (Task task : taskok) {
+            task.waitTime -= task.start;
             sorrend_ido += " "+task.name+": "+task.waitTime;
         }
         return sorrend_ido;

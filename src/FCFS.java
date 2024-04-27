@@ -20,6 +20,7 @@ public class FCFS extends Utemezo {
                     }
                     
             }
+            taskok.get(i).waitTime -= taskok.get(i).start;
             sorrend += taskok.get(i).name;
         }
         sorrend += waitTimeToString();
