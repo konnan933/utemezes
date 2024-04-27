@@ -5,7 +5,7 @@ public class App {
     public static void main(String[] args) throws Exception {
         String bemenet = "A,0,0,4;B,0,0,5;C,0,1,1;D,0,1,3;E,0,3,1";
         Scanner scr = new Scanner(System.in);
-        System.out.println("Kérem adja meg melyik ütemezőt akarja használni?");
+        System.out.println("Kérem adja meg melyik ütemezőt akarja használni!");
         System.out.println("1-est adja ha FCFS\n2-est adja ha RR\n3-ast adja ha SJF\n4-est adja ha SRTF\n0-ast adja ha kilép." );
         String valasz = scr.nextLine();
 
@@ -16,19 +16,22 @@ public class App {
 
         ArrayList<Task> arrBemenet = stringToTasks(bemenet);
         while (!valasz.equals("0")) {
-            inputTasksToString(arrBemenet);
             if (valasz.equals("1")) {
+                inputTasksToString(arrBemenet);
                 System.out.println(fcfs.utemez()+"\n");
             }else if (valasz.equals("2")) {
+                inputTasksToString(arrBemenet);
                 System.out.println(rr.utemez()+"\n");
             }else if (valasz.equals("3")) {
+                inputTasksToString(arrBemenet);
                 System.out.println(sjf.utemez()+"\n");
             }else if (valasz.equals("4")) {
+                inputTasksToString(arrBemenet);
                 System.out.println(srtf.utemez()+"\n");
             }else{
                 System.out.println("Rossz bemenet");    
             }
-            System.out.println("Kérem adja meg melyik ütemezőt akarja használni?");
+            System.out.println("Kérem adja meg melyik ütemezőt akarja használni!");
             System.out.println("1-est adja ha FCFS\n2-est adja ha RR\n3-ast adja ha SJF\n4-est adja ha SRTF\n0-ast adja ha kilép." );
             valasz = scr.nextLine();
         }
