@@ -6,43 +6,32 @@ import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        Scanner scr = new Scanner(System.in);
-        System.out.println("Kérem adja meg melyik ütemezőt akarja használni!");
-        System.out.println("1-est adja ha FCFS\n2-est adja ha RR\n3-ast adja ha SJF\n4-est adja ha SRTF\n0-ast adja ha kilép." );
-        String valasz = scr.nextLine();
 
-        
-        while (!valasz.equals("0")) {
-            if (valasz.equals("1")) {
+        //if (args.length > 0) {
+            if ( true/* args[0].equals("fcfs") */) {
                 ArrayList<Task> taskok = stdin();
                 inputTasksToString(taskok);
                 FCFS fcfs = new FCFS(taskok);
                 System.out.println(fcfs.utemez()+"\n");
-            }else if (valasz.equals("2")) {
+            }else if (args[0].equals("rr")) {
                 ArrayList<Task> taskok = stdin();
                 inputTasksToString(taskok);
                 RR rr = new RR(taskok, 2);
                 System.out.println(rr.utemez()+"\n");
-            }else if (valasz.equals("3")) {
+            }else if (args[0].equals("sjf")) {
                 ArrayList<Task> taskok = stdin();
                 inputTasksToString(taskok);
                 SJF sjf = new SJF(taskok);
                 System.out.println(sjf.utemez()+"\n");
-            }else if (valasz.equals("4")) {
+            }else if (args[0].equals("srtf")) {
                 ArrayList<Task> taskok = stdin();
                 inputTasksToString(taskok);
                 SRTF srtf = new SRTF(taskok, taskok);
                 System.out.println(srtf.utemez()+"\n");
             }else{
-                System.out.println("Rossz bemenet");    
+                System.out.println("Rossz argumentum");    
             }
-            System.out.println("Kérem adja meg melyik ütemezőt akarja használni!");
-            System.out.println("1-est adja ha FCFS\n2-est adja ha RR\n3-ast adja ha SJF\n4-est adja ha SRTF\n0-ast adja ha kilép." );
-            valasz = scr.nextLine();
-        }
-
-        System.out.println("Ön kilépett!");
-
+        //}
     }
 
     public static void inputTasksToString(ArrayList<Task> tasks){
@@ -59,6 +48,7 @@ public class App {
     }
 
     public static ArrayList<Task> stdin() throws IOException{
+        System.out.println("Írja a feladatokat pl: A,0,0,2 formátum fontos!");
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
         ArrayList<Task> tasks = new ArrayList<Task>();
         String s;

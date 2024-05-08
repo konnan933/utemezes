@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class FCFS extends Utemezo {
 
@@ -10,7 +11,9 @@ public class FCFS extends Utemezo {
     public String utemez() {    
         
         String sorrend = "FCFS:\n";
-         
+
+        Collections.sort(taskok, new TaskByLengthStart());
+        
         for (int i = 0; i < taskok.size(); i++) {
             wait : for (int j = 0; j < taskok.size(); j++) {
                     if(taskok.get(j) == taskok.get(i)){
@@ -24,7 +27,10 @@ public class FCFS extends Utemezo {
             sorrend += taskok.get(i).name;
         }
         sorrend += waitTimeToString();
-        return sorrend;
+        return sorrend; 
+
+        
+        
     }
 
     @Override
