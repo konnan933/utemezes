@@ -7,8 +7,8 @@ import java.util.Scanner;
 public class App {
     public static void main(String[] args) throws Exception {
 
-        //if (args.length > 0) {
-            if ( true/* args[0].equals("fcfs") */) {
+        if (args.length > 0) {
+            if (args[0].equals("fcfs") ) {
                 ArrayList<Task> taskok = stdin();
                 inputTasksToString(taskok);
                 FCFS fcfs = new FCFS(taskok);
@@ -16,7 +16,7 @@ public class App {
             }else if (args[0].equals("rr")) {
                 ArrayList<Task> taskok = stdin();
                 inputTasksToString(taskok);
-                RR rr = new RR(taskok, 2);
+                RR rr = new RR(taskok, Integer.parseInt(args[1]));
                 System.out.println(rr.utemez()+"\n");
             }else if (args[0].equals("sjf")) {
                 ArrayList<Task> taskok = stdin();
@@ -31,7 +31,7 @@ public class App {
             }else{
                 System.out.println("Rossz argumentum");    
             }
-        //}
+        }
     }
 
     public static void inputTasksToString(ArrayList<Task> tasks){
