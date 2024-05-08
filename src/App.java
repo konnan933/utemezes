@@ -1,32 +1,37 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        String bemenet = "A,0,0,4;B,0,0,5;C,0,1,1;D,0,1,3;E,0,3,1";
         Scanner scr = new Scanner(System.in);
         System.out.println("Kérem adja meg melyik ütemezőt akarja használni!");
         System.out.println("1-est adja ha FCFS\n2-est adja ha RR\n3-ast adja ha SJF\n4-est adja ha SRTF\n0-ast adja ha kilép." );
         String valasz = scr.nextLine();
 
         
-        ArrayList<Task> arrBemenet = stringToTasks(bemenet);
         while (!valasz.equals("0")) {
             if (valasz.equals("1")) {
-                inputTasksToString(arrBemenet);
-                FCFS fcfs = new FCFS(stringToTasks(bemenet));
+                ArrayList<Task> taskok = stdin();
+                inputTasksToString(taskok);
+                FCFS fcfs = new FCFS(taskok);
                 System.out.println(fcfs.utemez()+"\n");
             }else if (valasz.equals("2")) {
-                inputTasksToString(arrBemenet);
-                RR rr = new RR(stringToTasks(bemenet), 2);
+                ArrayList<Task> taskok = stdin();
+                inputTasksToString(taskok);
+                RR rr = new RR(taskok, 2);
                 System.out.println(rr.utemez()+"\n");
             }else if (valasz.equals("3")) {
-                SJF sjf = new SJF(stringToTasks(bemenet));
-                inputTasksToString(arrBemenet);
+                ArrayList<Task> taskok = stdin();
+                inputTasksToString(taskok);
+                SJF sjf = new SJF(taskok);
                 System.out.println(sjf.utemez()+"\n");
             }else if (valasz.equals("4")) {
-                SRTF srtf = new SRTF(stringToTasks(bemenet), stringToTasks(bemenet));
-                inputTasksToString(arrBemenet);
+                ArrayList<Task> taskok = stdin();
+                inputTasksToString(taskok);
+                SRTF srtf = new SRTF(taskok, taskok);
                 System.out.println(srtf.utemez()+"\n");
             }else{
                 System.out.println("Rossz bemenet");    
@@ -48,18 +53,18 @@ public class App {
         System.out.println("");
     }
 
-    public static ArrayList<Task> stringToTasks(String stringTasks){
-        ArrayList<Task> taskok = new ArrayList<>();
-        String[] taskSorok  = stringTasks.split(";");
+    public static Task stringToTasks(String stringTasks){
+        String[] task = stringTasks.split(",");
+        return new Task(task[0], Integer.parseInt(task[1]), Integer.parseInt(task[2]), Integer.parseInt(task[3]));
+    }
 
-        for (String sor : taskSorok) {
-            String[] task = sor.split(",");
-            taskok.add(new Task(task[0], Integer.parseInt(task[1]), Integer.parseInt(task[2]), Integer.parseInt(task[3])));
+    public static ArrayList<Task> stdin() throws IOException{
+        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+        ArrayList<Task> tasks = new ArrayList<Task>();
+        String s;
+        while ((s = in.readLine()) != null && s.length() != 0) {
+            tasks.add(stringToTasks(s));      
         }
-        
-        
-        
-        return taskok;
-        
+        return tasks; 
     }
 }
