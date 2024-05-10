@@ -19,14 +19,18 @@ public class App {
                 RR rr = new RR(taskok, Integer.parseInt(args[1]));
                 System.out.println(rr.utemez()+"\n");
             }else if (args[0].equals("sjf")) {
-                ArrayList<Task> taskok = stdin();
+                ArrayList<Task> taskok = stdin();  
                 inputTasksToString(taskok);
                 SJF sjf = new SJF(taskok);
                 System.out.println(sjf.utemez()+"\n");
             }else if (args[0].equals("srtf")) {
                 ArrayList<Task> taskok = stdin();
+                ArrayList<Task> taskok_2 = new ArrayList<>();
+                for (Task task : taskok) {
+                    taskok_2.add(new Task(task.name,task.prio,task.start,task.length));
+                }
                 inputTasksToString(taskok);
-                SRTF srtf = new SRTF(taskok, taskok);
+                SRTF srtf = new SRTF(taskok, taskok_2);
                 System.out.println(srtf.utemez()+"\n");
             }else{
                 System.out.println("Rossz argumentum");    

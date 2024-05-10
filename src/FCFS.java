@@ -11,8 +11,6 @@ public class FCFS extends Utemezo {
     public String utemez() {    
         
         String sorrend = "FCFS:\n";
-
-        Collections.sort(taskok, new TaskByLengthStart());
         
         for (int i = 0; i < taskok.size(); i++) {
             wait : for (int j = 0; j < taskok.size(); j++) {
